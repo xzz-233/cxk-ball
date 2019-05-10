@@ -137,18 +137,17 @@ class SkillE extends Skill {
       '跳舞接球',
       '',
       'cxk转身跳起\n迎面走来的你让我如此蠢蠢欲动\n这种感觉我从未有\nCause I got a crush on you who you',
-      0,
+      600/1000,/*duration / 1000*/
       0,
       'E');
-    this.duration =600;//跳持续时间(ms)
-    this.jumpy=380;//原来y=450，跳到最高点y
+    this.duration=600;//跳持续时间(ms)
+    this.jumpy=300;//原来y=450，跳到最高点y
   }
 
   cast() {
     super.cast();
     const {paddle} = this.main;
     var beginTime=new Date().getTime();
-    g.drawImage(Paddle);
     this.casting=setInterval(() => {
     	var nowTime=new Date().getTime();
       if(nowTime>beginTime+this.duration/2)paddle.y=this.jumpy+(nowTime-beginTime-this.duration/2)*(450-this.jumpy)/(this.duration/2);
