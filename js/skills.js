@@ -2,7 +2,7 @@ class Skill {
   /**
    * 
    * @param {*} main 
-   * @param {string} name 技能名称
+   * @param {string} name 技能名称a
    * @param {*} icon 技能图标
    * @param {string} desc 技能描述
    * @param {number} cd 技能冷却时间，单位秒
@@ -127,5 +127,38 @@ class SkillW extends Skill {
     setTimeout(() => {
       clearInterval(this.casting);
     }, this.duration * 1000);
+  }
+}
+
+
+class SkillE extends Skill {
+  constructor(main) {
+    super(main,
+      '跳舞接球',
+      '',
+      'cxk转身跳起\n迎面走来的你让我如此蠢蠢欲动\n这种感觉我从未有\nCause I got a crush on you who you',
+      0,
+      0,
+      'E');
+    this.duration =600;//跳持续时间(ms)
+    this.jumpy=380;//原来y=450，跳到最高点y
+  }
+
+  cast() {
+    super.cast();
+    const {paddle} = this.main;
+    var beginTime=new Date().getTime();
+    g.drawImage(Paddle);
+    this.casting=setInterval(() => {
+    	var nowTime=new Date().getTime();
+      if(nowTime>beginTime+this.duration/2)paddle.y=this.jumpy+(nowTime-beginTime-this.duration/2)*(450-this.jumpy)/(this.duration/2);
+      else paddle.y=450-(nowTime-beginTime)*(450-this.jumpy)/(this.duration/2);
+      if(nowTime<beginTime+this.duration/3)Paddle.image=allImg.skille1;
+      else if(nowTime<beginTime+this.duration*2/3)Paddle.image=allImg.skille2;
+      else Paddle.image=allImg.skille3;
+    }, 10);
+    setTimeout(() => {
+      clearInterval(this.casting);
+    }, this.duration);
   }
 }

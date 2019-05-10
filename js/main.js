@@ -22,6 +22,7 @@ let _main = {
 
   skillq: null,                        // q技能
   skillw: null,                        // w技能
+  skille: null,                        // e技能
 
   start: function () {                 // 游戏启动函数
     let self = this
@@ -54,6 +55,7 @@ let _main = {
 
     self.skillq = new SkillQ(self);
     self.skillw = new SkillW(self);
+    self.skille = new SkillE(self);
     
     /**
      * 游戏初始化

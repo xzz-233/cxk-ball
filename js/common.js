@@ -35,4 +35,7 @@ const allImg = {
   ballshadow: 'ballshadow.png',
   block1: 'b1.png',
   block2: 'b2.png',
+  skille1: 'paddle_skille1.png',
+  skille2: 'paddle_skille2.png',
+  skille3: 'paddle_skille3.png',
 }
