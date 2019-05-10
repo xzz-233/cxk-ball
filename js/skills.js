@@ -138,7 +138,7 @@ class SkillE extends Skill {
       '',
       'cxk转身跳起\n迎面走来的你让我如此蠢蠢欲动\n这种感觉我从未有\nCause I got a crush on you who you',
       600/1000,/*duration / 1000*/
-      0,
+      1,
       'E');
     this.duration=600;//跳持续时间(ms)
     this.jumpy=300;//原来y=450，跳到最高点y
@@ -152,9 +152,6 @@ class SkillE extends Skill {
     	var nowTime=new Date().getTime();
       if(nowTime>beginTime+this.duration/2)paddle.y=this.jumpy+(nowTime-beginTime-this.duration/2)*(450-this.jumpy)/(this.duration/2);
       else paddle.y=450-(nowTime-beginTime)*(450-this.jumpy)/(this.duration/2);
-      if(nowTime<beginTime+this.duration/3)Paddle.image=allImg.skille1;
-      else if(nowTime<beginTime+this.duration*2/3)Paddle.image=allImg.skille2;
-      else Paddle.image=allImg.skille3;
     }, 10);
     setTimeout(() => {
       clearInterval(this.casting);
